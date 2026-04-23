@@ -1,10 +1,10 @@
-import Image from "next/image";
-import Registration from "./components/registration";
+
+import Login from "./login/page";
 
 export default function Home() {
   return (
     <div>
-      <Registration/>
+     home
     </div>
   );
 }

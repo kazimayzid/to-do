@@ -10,6 +10,9 @@ import { Input } from "@/components/ui/input";
 import { UserPen, Mail, Lock, EyeOff, Eye } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
+import Link from "next/link";
+import { toast } from "sonner"
+import ThemeToggle from "../components/themeToggle";
 
 export default function Registration() {
   const [showPassword, setShowPassword] = useState(false);
@@ -26,6 +29,15 @@ export default function Registration() {
 
   async function onSubmit(data: z.infer<typeof RegistrationSchema>) {
     console.log("ready to send backend", data);
+     toast.success("Registration successful", {
+    description: "Your account has been created",
+    action: {
+        label: "Undo",
+        onClick: () => {
+        form.reset();
+      },
+    }
+  });
   }
 
   function handleShowPassword() {
@@ -162,6 +174,9 @@ export default function Registration() {
               Register
             </Button>
           </form>
+          <p className="text-[16px] mt-4">Already have an account?<Link href={"/login"} className="text-[#008BD9] cursor-pointer"> Sign In</Link></p>
+
+          <ThemeToggle/>
         </div>
       </div>
     </div>
